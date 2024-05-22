@@ -2,21 +2,20 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
 
-const apiUrl = 'mongodb+srv://L33thax420:L33thax420@clusterflix.xakkrlo.mongodb.net/myFlix?retryWrites=true&w=majority'
+const apiUrl = 'https://netfixmovies.netlify.app/'
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserRegistrationService {
+export class FetchApiDataService {
 //Inject HttpClient module to the constructor params, provides HttpClient to class, available via this.http
   constructor(private http: HttpClient) {
    }
-   public userRegistration (userDetails: any ): //takes arguement of type 'any' that's 'userDetails' to post API endpoint
+   public userRegistration (userData: any ): //takes arguement of type 'any' that's 'userDetails' to post API endpoint
   Observable<any>{ //TS type cast. Gives TS type info (says: 'we return this type) almost like an enhanced promise: allows async event processes
-    console.log(userDetails)
-    return this.http.post(apiUrl + 'users', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
+    console.log(userData)
+    return this.http.post(apiUrl + '/users', userData).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
       catchError(this.handleError)
     );
   }
