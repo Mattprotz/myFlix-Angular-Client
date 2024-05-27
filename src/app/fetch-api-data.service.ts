@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 const apiUrl = "https://myflix-movienet-6e137990a158.herokuapp.com";
 
@@ -11,13 +11,14 @@ const apiUrl = "https://myflix-movienet-6e137990a158.herokuapp.com";
 export class UserRegistrationService {
 //Inject HttpClient module to the constructor params, provides HttpClient to class, available via this.http
   constructor(private http: HttpClient) {
+    console.log('UserRegistrationService instantiated');
    }
    public userRegistration(userData: any ): //takes argument of type 'any' that's 'userDetails' to post API endpoint
   Observable<any>{ //TS type cast. Gives TS type info (says: 'we return this type) almost like an enhanced promise: allows async event processes
-    console.log(userData)
-    return this.http.post(apiUrl + '/users', userData).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
+    console.log('userRegistration called with:',userData)
+    return this.http.post(apiUrl + 'users', userData).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
       catchError(this.handleError)
-    );
+      );
   }
     public userLogin(userDetails: any):
       Observable<any>{
@@ -99,7 +100,7 @@ export class UserRegistrationService {
 
   private handleError(error: HttpErrorResponse): any {
     if(error.error instanceof ErrorEvent){
-      console.error('Some error occured:', error.error.message);
+      console.error('Some error ocurred:', error.error.message);
     }else{
       console.error(
         'Error Status code ${error.status},'+'Error body is: ${error.error}'

@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http"; //Angular API for client-server/API communication
+import { HttpClientModule } from '@angular/common/http'; //Angular API for client-server/API communication
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from './app-routing.module';
