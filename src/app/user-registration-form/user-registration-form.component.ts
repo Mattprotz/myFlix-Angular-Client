@@ -13,23 +13,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-registration-form',
+  templateUrl: './user-registration-form.component.html',
+  styleUrls: ['./user-registration-form.component.scss'],
   standalone: true,
   imports: [
     MatCardModule,
     MatFormField,
-    MatInputModule,
-    MatButtonModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  templateUrl: './user-registration-form.component.html',
-  styleUrls: ['./user-registration-form.component.scss']
+    FormsModule
+  ]
 })
 export class UserRegistrationFormComponent implements OnInit{
   @Input() userData = {Username: '', Password:'', Email:'', Birthday:''};
 
   constructor(
     public fetchApiData: UserRegistrationService,
+    private http: HttpClientModule,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar
   ) {
