@@ -10,14 +10,14 @@ const apiUrl = "https://myflix-movienet-6e137990a158.herokuapp.com";
 export class FetchApiDataService {
 
 //Inject HttpClient module to the constructor params, provides HttpClient to class, available via this.http
-  constructor(private httpClient: HttpClient) {
+  constructor(protected httpClient: HttpClient) {
     console.log('UserRegistrationService instantiated');
    }
 
   public userRegistration(userDetails: any ): //takes argument of type 'any' that's 'userDetails' to post API endpoint
   Observable<any>{ //says: 'we return this type almost like an enhanced promise: allows async event processes
     console.log('userRegistration called with:',userDetails)
-    return this.httpClient.post(apiUrl + 'users', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
+    return this.httpClient.post(apiUrl + '/users', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
       catchError(this.handleError)
       );
   }
@@ -104,7 +104,7 @@ export class FetchApiDataService {
       console.error('Some error ocurred:', error.error.message);
     }else{
       console.error(
-        'Error Status code ${error.status},'+'Error body is: ${error.error}'
+        'Error Status code ${error.status},'+'Error body is:', error.error
       )
     } return throwError(
       'Something really bad happened; Please try again later'

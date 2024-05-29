@@ -3,8 +3,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import {FetchApiDataService} from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormField } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatLabel } from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input';
 
 
 @Component({
@@ -14,8 +16,10 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     MatCardModule,
-    MatFormField,
-    FormsModule
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatLabel
   ]
 })
 export class UserRegistrationFormComponent implements OnInit{
@@ -40,6 +44,7 @@ export class UserRegistrationFormComponent implements OnInit{
         duration:2000
       });
     }, (result)=>{
+      console.error('Error Status code', result.status, 'Error body is:', result.error);
       this.snackBar.open(result, 'OK',{
         duration:2000
       });
