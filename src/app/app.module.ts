@@ -11,7 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import {UserRegistrationFormComponent} from './user-registration-form/user-registration-form.component'
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -24,7 +24,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         BrowserModule,
         HttpClientModule,
         AppRoutingModule, 
-        FormsModule,
         BrowserAnimationsModule,
         MatDialogModule,
         MatInputModule,
@@ -33,7 +32,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         MatFormFieldModule,
         MatSnackBarModule
     ],
-    providers:[HttpClientModule],
+    providers:[],
     bootstrap:[AppComponent]  
 })
 export class AppModule { }

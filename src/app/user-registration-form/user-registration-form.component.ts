@@ -1,14 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog'; //import to close dialog on success
+import { MatDialogRef } from '@angular/material/dialog'; 
 import {FetchApiDataService} from '../fetch-api-data.service';
-
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormField } from '@angular/material/form-field';
-import { MatInput, MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; 
 
 
 @Component({
@@ -27,7 +23,6 @@ export class UserRegistrationFormComponent implements OnInit{
 
   constructor(
     public fetchApiData: FetchApiDataService,
-    private http: HttpClientModule,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar
   ) {
