@@ -8,19 +8,20 @@ const apiUrl = "https://myflix-movienet-6e137990a158.herokuapp.com";
 @Injectable({
   providedIn: 'root',
 })
-export class UserRegistrationService {
+export class FetchApiDataService {
 //Inject HttpClient module to the constructor params, provides HttpClient to class, available via this.http
   constructor(private http: HttpClient) {
     console.log('UserRegistrationService instantiated');
    }
-   public userRegistration(userData: any ): //takes argument of type 'any' that's 'userDetails' to post API endpoint
-  Observable<any>{ //TS type cast. Gives TS type info (says: 'we return this type) almost like an enhanced promise: allows async event processes
-    console.log('userRegistration called with:',userData)
-    return this.http.post(apiUrl + 'users', userData).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
+
+  public userRegistration(userDetails: any ): //takes argument of type 'any' that's 'userDetails' to post API endpoint
+  Observable<any>{ //says: 'we return this type almost like an enhanced promise: allows async event processes
+    console.log('userRegistration called with:',userDetails)
+    return this.http.post(apiUrl + 'users', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
       catchError(this.handleError)
       );
   }
-    public userLogin(userDetails: any):
+  public userLogin(userDetails: any):
       Observable<any>{
         console.log(userDetails)
         return this.http.get(apiUrl + 'users', userDetails).pipe(
