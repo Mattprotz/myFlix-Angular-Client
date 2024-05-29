@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 const apiUrl = "https://myflix-movienet-6e137990a158.herokuapp.com";
 @Injectable({
@@ -10,15 +10,30 @@ const apiUrl = "https://myflix-movienet-6e137990a158.herokuapp.com";
 export class FetchApiDataService {
 
 //Inject HttpClient module to the constructor params, provides HttpClient to class, available via this.http
-  constructor(protected httpClient: HttpClient) {
-    console.log('UserRegistrationService instantiated');
+  constructor(private httpClient: HttpClient) {
+    console.log('FetchApiDataService instantiated');
    }
+
+   private handleError(error: HttpErrorResponse): Observable<never> {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Client-side error:', error.error.message);
+    } else {
+      console.error(`Server-side error: ${error.status}\nBody: ${error.error}`);
+    }
+    return throwError('Something went wrong; please try again later.');
+  }
+
+  private extractResponseData(res: any): any {
+    const body = res;
+    return body || { };
+  }
 
   public userRegistration(userDetails: any ): //takes argument of type 'any' that's 'userDetails' to post API endpoint
   Observable<any>{ //says: 'we return this type almost like an enhanced promise: allows async event processes
-    console.log('userRegistration called with:',userDetails)
+    console.log(userDetails)
     return this.httpClient.post(apiUrl + '/users', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
-      catchError(this.handleError)
+      catchError(this.handleError),
+      map(this.extractResponseData)
       );
   }
   public userLogin(userDetails: any):
@@ -99,15 +114,4 @@ export class FetchApiDataService {
         )
       }
 
-  private handleError(error: HttpErrorResponse): any {
-    if(error.error instanceof ErrorEvent){
-      console.error('Some error ocurred:', error.error.message);
-    }else{
-      console.error(
-        'Error Status code ${error.status},'+'Error body is:', error.error
-      )
-    } return throwError(
-      'Something really bad happened; Please try again later'
-    )
-  }
 }
