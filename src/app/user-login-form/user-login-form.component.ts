@@ -21,7 +21,7 @@ import { MatInputModule } from '@angular/material/input';
     MatLabel
   ],
 })
-export class UserLoginFormComponent {
+export class UserLoginFormComponent implements OnInit{
   @Input() userData = {Username: '', Password:''};
 
   constructor(

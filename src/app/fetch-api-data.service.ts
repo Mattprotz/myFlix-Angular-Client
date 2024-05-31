@@ -44,6 +44,7 @@ export class FetchApiDataService {
           map(this.extractResponseData)
         )
       }
+      
     public getAllMovies(movieDetails: any):
       Observable<any>{
         console.log(movieDetails)

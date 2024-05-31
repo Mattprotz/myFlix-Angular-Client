@@ -14,3 +14,16 @@ describe('UserRegistrationService', () => {
     expect(service).toBeTruthy();
   });
 });
+
+describe('UserLoginService', () => {
+  let service: FetchApiDataService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(FetchApiDataService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
