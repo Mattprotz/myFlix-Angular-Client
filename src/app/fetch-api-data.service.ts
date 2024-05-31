@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-const apiUrl = "https://myflix-movienet-6e137990a158.herokuapp.com";
+const apiUrl = "https://myflix-movienet-6e137990a158.herokuapp.com/";
 @Injectable({
   providedIn: 'root',
 })
@@ -31,7 +31,7 @@ export class FetchApiDataService {
   public userRegistration(userDetails: any ): //takes argument of type 'any' that's 'userDetails' to post API endpoint
   Observable<any>{ //says: 'we return this type almost like an enhanced promise: allows async event processes
     console.log(userDetails)
-    return this.httpClient.post(apiUrl + '/users', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
+    return this.httpClient.post(apiUrl + 'users/', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
       catchError(this.handleError),
       map(this.extractResponseData)
       );
@@ -39,8 +39,9 @@ export class FetchApiDataService {
   public userLogin(userDetails: any):
       Observable<any>{
         console.log(userDetails)
-        return this.httpClient.get(apiUrl + 'users', userDetails).pipe(
-          catchError(this.handleError)
+        return this.httpClient.get(apiUrl + 'users/', userDetails).pipe(
+          catchError(this.handleError),
+          map(this.extractResponseData)
         )
       }
     public getAllMovies(movieDetails: any):
