@@ -39,16 +39,23 @@ export class FetchApiDataService {
   public userLogin(userDetails: any):
       Observable<any>{
         console.log(userDetails)
-        return this.httpClient.get(apiUrl + 'login', userDetails).pipe(
+        return this.httpClient.post(apiUrl + 'login', userDetails).pipe(
           catchError(this.handleError),
           map(this.extractResponseData)
         )
       }
       
-    public getAllMovies(movieDetails: any):
+    public getAllMovies():
       Observable<any>{
-        console.log(movieDetails)
-        return this.httpClient.get(apiUrl + 'movies', movieDetails).pipe(
+        const token = localStorage.getItem('token');
+        return this.httpClient.get(apiUrl + 'movies/', {
+          headers: new HttpHeaders(
+            {
+              Authorization:'Bearer'+ token
+            }
+          )
+        }).pipe(
+          map(this.extractResponseData),
           catchError(this.handleError)
         )
       }
