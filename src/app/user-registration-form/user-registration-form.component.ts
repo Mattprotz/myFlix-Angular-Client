@@ -40,11 +40,13 @@ export class UserRegistrationFormComponent implements OnInit{
     console.log('registerUser called');
     this.fetchApiData.userRegistration(this.userData).subscribe((result)=>{
       this.dialogRef.close(); //close dialog modal on success
-      this.snackBar.open(result, 'OK',{
+      this.snackBar.open('Sign Up Sucessful', 'OK',{
         duration:2000
       });
     }, (result)=>{
-      console.error('Error Status code', result.status, 'Error body is:', result.error);
+      if (result.status === 400 && result.error.includes('already exists')) {
+      console.error ( 'Username already exists. Please choose a different username.');
+      }
       this.snackBar.open(result, 'OK',{
         duration:2000
       });

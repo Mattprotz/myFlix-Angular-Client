@@ -39,7 +39,7 @@ export class FetchApiDataService {
   public userLogin(userDetails: any):
       Observable<any>{
         console.log(userDetails)
-        return this.httpClient.get(apiUrl + 'users/', userDetails).pipe(
+        return this.httpClient.get(apiUrl + 'login', userDetails).pipe(
           catchError(this.handleError),
           map(this.extractResponseData)
         )
