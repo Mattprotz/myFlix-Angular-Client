@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service'
 import { MatDialogContent } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatCard, MatCardTitle } from '@angular/material/card';
-
+import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-movie-card',
+  standalone: true,
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
-  standalone:true,
-  imports:[
-    MatCardTitle,
-    MatCard,
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    CommonModule,
   ]
 })
 export class MovieCardComponent {

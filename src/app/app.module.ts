@@ -1,30 +1,32 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from '@angular/common/http'; //Angular API for client-server/API communication
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http'; 
 import { NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
-import { AppRoutingModule } from './app-routing.module';
 import {  RouterModule, Routes } from '@angular/router';
 
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule, MatCardTitle } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatDialogModule, MatDialogContent } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RouterOutlet } from "@angular/router";
 
 import {UserRegistrationFormComponent} from './user-registration-form/user-registration-form.component'
 import { UserLoginFormComponent } from "./user-login-form/user-login-form.component";
 import { MovieCardComponent } from "./movie-card/movie-card.component";
 import { WelcomePageComponent } from "./welcome-page/welcome-page.component";
+import { FormsModule } from "@angular/forms";
 
 
 const appRoutes: Routes = [
     { path: 'welcome', component: WelcomePageComponent },
     { path: 'movies', component: MovieCardComponent },
-    { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+    { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 
   ];
 
@@ -37,19 +39,23 @@ const appRoutes: Routes = [
         WelcomePageComponent,
     ],
     imports:[
-        RouterModule.forRoot(appRoutes),
         BrowserModule,
-        HttpClientModule,
         AppRoutingModule, 
+        HttpClientModule,
         BrowserAnimationsModule,
         MatDialogModule,
         MatDialogContent,
         MatInputModule,
+        MatLabel,
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
         MatSnackBarModule,
-        MatCardTitle,
+        FormsModule,
+        RouterOutlet,
+        RouterModule.forRoot(appRoutes),
+        UserRegistrationFormComponent,
+        MovieCardComponent,
     ],
     providers:[],
     bootstrap:[AppComponent]  

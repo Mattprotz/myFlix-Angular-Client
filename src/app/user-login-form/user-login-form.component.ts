@@ -2,26 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog'; 
 import {FetchApiDataService} from '../fetch-api-data.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-import { MatLabel } from '@angular/material/form-field'; 
-import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
-  standalone: true,
   templateUrl: './user-login-form.component.html',
   styleUrl: './user-login-form.component.scss',
-  imports: [
-    MatSnackBarModule,
-    MatCardModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatLabel,
-    MatInputModule
-  ]
 })
 
 export class UserLoginFormComponent implements OnInit{

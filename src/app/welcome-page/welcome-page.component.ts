@@ -5,14 +5,12 @@ import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-welcome-page',
-  standalone: true,
-  imports: [],
   templateUrl: './welcome-page.component.html',
   styleUrl: './welcome-page.component.scss'
 })
 export class WelcomePageComponent implements OnInit{
   constructor(public dialog: MatDialog) { }
-  
+
   ngOnInit(): void {
   }
   
