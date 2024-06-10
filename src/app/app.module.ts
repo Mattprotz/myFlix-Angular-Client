@@ -1,11 +1,12 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http'; 
+import { BrowserModule, provideClientHydration } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from '@angular/common/http'; 
+
 
 import { AppComponent } from "./app.component";
-import {  RouterModule, Routes } from '@angular/router';
 
+import { RouterModule, RouterOutlet, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,7 +15,6 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatDialogModule, MatDialogContent } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { RouterOutlet } from "@angular/router";
 
 import {UserRegistrationFormComponent} from './user-registration-form/user-registration-form.component'
 import { UserLoginFormComponent } from "./user-login-form/user-login-form.component";
@@ -23,13 +23,11 @@ import { WelcomePageComponent } from "./welcome-page/welcome-page.component";
 import { FormsModule } from "@angular/forms";
 
 
-const appRoutes: Routes = [
+const routes: Routes = [
     { path: 'welcome', component: WelcomePageComponent },
     { path: 'movies', component: MovieCardComponent },
     { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
-
   ];
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -39,9 +37,11 @@ const appRoutes: Routes = [
         WelcomePageComponent,
     ],
     imports:[
+        RouterModule.forRoot(routes),
         BrowserModule,
         AppRoutingModule, 
         HttpClientModule,
+        RouterOutlet,
         BrowserAnimationsModule,
         MatDialogModule,
         MatDialogContent,
@@ -52,12 +52,12 @@ const appRoutes: Routes = [
         MatFormFieldModule,
         MatSnackBarModule,
         FormsModule,
-        RouterOutlet,
-        RouterModule.forRoot(appRoutes),
+        RouterModule,
         UserRegistrationFormComponent,
         MovieCardComponent,
     ],
-    providers:[],
+    providers:[provideClientHydration()],
+    exports:[AppComponent],
     bootstrap:[AppComponent]  
 })
 export class AppModule { }
