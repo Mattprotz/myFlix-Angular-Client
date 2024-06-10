@@ -6,7 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
-  styleUrl: './welcome-page.component.scss'
+  styleUrl: './welcome-page.component.scss',
+  standalone:true
 })
 export class WelcomePageComponent implements OnInit{
   constructor(public dialog: MatDialog) { }

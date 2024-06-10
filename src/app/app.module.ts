@@ -40,6 +40,7 @@ const routes: Routes = [
         RouterModule.forRoot(routes),
         BrowserModule,
         AppRoutingModule, 
+        RouterModule,
         HttpClientModule,
         RouterOutlet,
         BrowserAnimationsModule,
@@ -52,9 +53,9 @@ const routes: Routes = [
         MatFormFieldModule,
         MatSnackBarModule,
         FormsModule,
-        RouterModule,
         UserRegistrationFormComponent,
         MovieCardComponent,
+        WelcomePageComponent
     ],
     providers:[provideClientHydration()],
     exports:[AppComponent],

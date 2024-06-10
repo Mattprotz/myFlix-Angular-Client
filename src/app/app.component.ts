@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterModule, RouterOutlet } from '@angular/router';
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone:true,
-  imports: [RouterOutlet, RouterModule]
+  imports:[RouterOutlet, RouterModule, MatDialogModule]
+ 
 })
 export class AppComponent {
   title = 'myFlix-Angular-client';
 
-  // constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) { }
+
 
   // openMoviesDialog(): void {
   //   this.dialog.open(MovieCardComponent, {

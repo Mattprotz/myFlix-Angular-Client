@@ -7,14 +7,8 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-movie-card',
-  standalone: true,
   templateUrl: './movie-card.component.html',
-  styleUrl: './movie-card.component.scss',
-  imports: [
-    MatCardModule,
-    MatButtonModule,
-    CommonModule,
-  ]
+  styleUrl: './movie-card.component.scss'
 })
 export class MovieCardComponent {
   movies: any[] = [];
