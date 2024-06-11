@@ -3,20 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
-
-export const routes: Routes = [
-  {path: 'welcome', component: WelcomePageComponent},
-  {path: 'movies', component: MovieCardComponent},
-  {path: '', redirectTo:'welcome', pathMatch: 'prefix'}
+const routes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'movies', component: MovieCardComponent },
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' }
 ];
 
 @NgModule({
-  
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports:[
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
