@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service'
-import { MatDialogContent } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,7 @@ export class MovieCardComponent {
 
   constructor(
     public fetchApiData: FetchApiDataService,
-    public dialog: MatDialogContent,
+    public dialog: MatDialog,
     public snackBar: MatSnackBar
   ){}
 
