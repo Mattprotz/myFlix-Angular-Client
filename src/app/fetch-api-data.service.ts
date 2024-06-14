@@ -33,7 +33,7 @@ export class FetchApiDataService {
   public userRegistration(userDetails: any ): //takes argument of type 'any' that's 'userDetails' to post API endpoint
   Observable<any>{ //says: 'we return this type almost like an enhanced promise: allows async event processes
     console.log(userDetails)
-    return this.httpClient.post(apiUrl + 'users/', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
+    return this.httpClient.post(apiUrl + 'users', userDetails).pipe( //'pipe' from RxJS, combines multiple funcs into single (only one in this case: 'catchError')
       catchError(this.handleError),
       map(this.extractResponseData)
       );
@@ -48,16 +48,12 @@ export class FetchApiDataService {
       }
       
 
-      public getAllMovies(): Observable<any> {
-        const token = localStorage.getItem('token') || ""
-        return this.httpClient.get(`${apiUrl}movies`, {
-          headers: new HttpHeaders(
-            {
-              Authorization: 'Bearer ' + token,
-            })
-        })
-          .pipe(catchError(this.handleError));
-      }
+    public getAllMovies(): Observable<any> {
+      const token = localStorage.getItem('token') || ""
+      return this.httpClient.get(`${apiUrl}movies/`)
+        .pipe(catchError(this.handleError));
+    }
+    
     public getMovie(movieDetails: any):
       Observable<any>{
         console.log(movieDetails)
