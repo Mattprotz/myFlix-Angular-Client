@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -35,17 +36,18 @@ const routes: Routes = [
     WelcomePageComponent,
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatDialogModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatDialogModule,
     MatSnackBarModule,
-    FormsModule,
+    MatIconModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

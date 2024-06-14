@@ -14,13 +14,15 @@ export class FetchApiDataService {
     console.log('FetchApiDataService instantiated');
    }
 
-   private handleError(error: HttpErrorResponse): Observable<never> {
+   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
-      console.error('Client-side error:', error.error.message);
+      console.error('Some Error Occurred:', error.error.message);
     } else {
-      console.error(`Server-side error: ${error.status}\nBody: ${error.error}`);
+      console.error(
+        `Error Status code ${error.status}, ` + `Error Body is: ${error.error}`
+      );
     }
-    return throwError('Something went wrong; please try again later.');
+    return throwError('Something bad happened; please try again later.');
   }
 
   private extractResponseData(res: any): any {
@@ -45,19 +47,16 @@ export class FetchApiDataService {
         )
       }
       
-    public getAllMovies():
-      Observable<any>{
-        const token = localStorage.getItem('token');
-        return this.httpClient.get(apiUrl + 'movies/', {
+
+      public getAllMovies(): Observable<any> {
+        const token = localStorage.getItem('token') || ""
+        return this.httpClient.get(`${apiUrl}movies`, {
           headers: new HttpHeaders(
             {
-              Authorization:'Bearer'+ token
-            }
-          )
-        }).pipe(
-          map(this.extractResponseData),
-          catchError(this.handleError)
-        )
+              Authorization: 'Bearer ' + token,
+            })
+        })
+          .pipe(catchError(this.handleError));
       }
     public getMovie(movieDetails: any):
       Observable<any>{
