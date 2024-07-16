@@ -1,19 +1,22 @@
-<!DOCTYPE html>
+
 <div class="main-page">
+  <div class="welcome-title">
     <h1>MYFLIX</h1>
+    <h2>Discover all your favorite movies, shows, and more!</h2>
+    <h2>Login or Signup to start exploring</h2>
+  </div>
+  <div class="welcome-body">
     <button
-      mat-raised-button
       (click)="openUserRegistrationDialog()"
-      style="margin-right: 10px"
-      color="primary"
+      class="welcome-button"
     >
       Sign Up
     </button>
     <button 
-      mat-raised-button 
+      
       (click)="openUserLoginDialog()"
-      style="margin-right: 10px"
-      color="primary"
+      class="welcome-button"
     >Login</button>
+  </div>
 </div>
   
