@@ -30,6 +30,12 @@ export class FetchApiDataService {
     return body || { };
   }
 
+/**
+ * User Registration
+ * @param {Object} userDetails requires username and password
+ * @returns 
+ */
+
   public userRegistration(userDetails: any ): //takes argument of type 'any' that's 'userDetails' to post API endpoint
   Observable<any>{ //says: 'we return this type almost like an enhanced promise: allows async event processes
     console.log(userDetails)
@@ -38,6 +44,13 @@ export class FetchApiDataService {
       map(this.extractResponseData)
       );
   }
+
+/**
+ * User Login
+ * @param {Object} userDetails requires username and password
+ * @returns 
+ */
+
   public userLogin(userDetails: any):
       Observable<any>{
         console.log(userDetails)
@@ -47,13 +60,23 @@ export class FetchApiDataService {
         )
       }
       
+/**
+ * Get All Movies
+ * @returns if token invalid, status error, else returns array of movies
+ */
 
     public getAllMovies(): Observable<any> {
       const token = localStorage.getItem('token')
       return this.httpClient.get(apiUrl + 'movies')
         .pipe(catchError(this.handleError));
     }
-    
+
+/**
+ * Get Movie
+ * @param movieDetails
+ * @returns movie object
+ */
+
     public getMovie(movieDetails: any):
       Observable<any>{
         console.log(movieDetails)
@@ -61,6 +84,13 @@ export class FetchApiDataService {
           catchError(this.handleError)
         )
       }
+
+/**
+ * Get Director
+ * @param directorDetails
+ * @returns director object
+ */
+
     public getDirector(directorDetails: any):
       Observable<any>{
         console.log(directorDetails)
@@ -68,6 +98,13 @@ export class FetchApiDataService {
           catchError(this.handleError)
         )
       }
+
+/**
+ * Get Genre
+ * @param genre
+ * @returns genre
+ */
+
     public getGenre(genre: any):
       Observable<any>{
         console.log(genre)
@@ -75,6 +112,13 @@ export class FetchApiDataService {
           catchError(this.handleError)
         )
       }
+
+/**
+ * Get Use List
+ * @param userDetails
+ * @returns user object
+ */
+
     public getUser(userDetails: any):
       Observable<any>{
         console.log(userDetails)
@@ -82,6 +126,13 @@ export class FetchApiDataService {
           catchError(this.handleError)
         )
       }
+
+/**
+ * Get User Favorites list
+ * @param userFavorite
+ * @returns movie array
+ */
+
     public getUserFavorite(userFavorite: any):
       Observable<any>{
         console.log(userFavorite)
