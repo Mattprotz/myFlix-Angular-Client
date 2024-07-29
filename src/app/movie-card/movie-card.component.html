@@ -1,9 +1,7 @@
 <div class="welcome-title">
     <h1>MYFLIX</h1>
 </div>  
-<div class="movie-display">
-
-</div>
+<div class="movie-container">
 <div class="movie-list">
     <mat-card *ngFor="let movie of movies; let i = index" class="movie-card">
         <mat-card-header>
@@ -19,4 +17,5 @@
           <button mat-button>Learn More</button>
         </mat-card-actions>
       </mat-card>
+</div>
 </div>

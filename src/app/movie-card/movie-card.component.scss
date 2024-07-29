@@ -1,5 +1,4 @@
 
-
 .welcome-title{
     margin: 50px;
 }
@@ -8,10 +7,19 @@ h1{
     color:rgb(212, 112, 255);
     text-shadow: 3px 3px  #085fff;
     font-size: 115px;
+    
+}
+
+.movie-container{
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  justify-content: space-between;
 }
 
 .movie-list{
     display:flex;
+
     flex-wrap: nowrap;
     gap: 10px;
     overflow-x: auto;
@@ -19,16 +27,35 @@ h1{
     white-space: nowrap;
 }
 
+.movie-list::-webkit-scrollbar {
+  height: 10px;
+}
+
+.movie-list::-webkit-scrollbar-track {
+  background: #f4a2ff;
+  border-radius: 50px;
+}
+
+.movie-list::-webkit-scrollbar-thumb {
+  background: #085fff;
+  border-radius: 50px;
+}
+
 .movie-card {
     flex:0 0 auto;
     width: 400px;
     margin: 16px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 5px rgba(212, 112, 255);
+    background-color:  #f4a2ff;
+
+    mat-card{
+      color:  #085fff;
+    }
   
     mat-card-header {
-      background-color: #f5f5f5;
-      border-bottom: 1px solid #ddd;
+      background-color: rgb(212, 112, 255);
+      border-bottom: 1px solid  #085fff;
       color: black;
     }
   
